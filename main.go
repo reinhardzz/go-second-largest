@@ -10,7 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func SecondLargest(arr []int) (int, error) {
+func findSecondLargest(arr []int) (int, error) {
 	n := len(arr)
 	if n < 2 {
 		return 0, fmt.Errorf("array must contain at least two elements")
@@ -37,7 +37,7 @@ func secondLargestHandler(w http.ResponseWriter, r *http.Request) {
 		numbers = append(numbers, num)
 	}
 
-	secondLargest, err := SecondLargest(numbers)
+	secondLargest, err := findSecondLargest(numbers)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
